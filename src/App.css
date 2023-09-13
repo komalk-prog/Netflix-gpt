@@ -1,4 +1,58 @@
 *{
-  padding: 0px;
-  margin:0px;
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+}
+.header{
+    z-index: 10;
+    width: 100%;
+    position: absolute; 
+    top: 0px; 
+    background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(10, 10, 10));
+}
+.netflix-logo{
+    margin-top: 30px;
+    margin-left: 100px;
+    width: 11.25rem;
+    height: 5.5rem;
+    display: block;
+}
+.login-bg{
+    position: absolute;
+    top: 0px;
+    background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/42df4e1f-bef6-499e-87ff-c990584de314/5e7c383c-1f88-4983-b4da-06e14c0984ba/IN-en-20230904-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120%;
+    width: 100%;
+}
+.login-form {
+    height: 316px;
+    width: 333px;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.815);
+    margin: 10% 0% 0% 35%;
+    padding: 5% 0% 4% 4%;
+    border-radius: 5%;
+}
+.login-ip{
+    font-size: medium;
+    padding: 12px 71px 12px 5px;
+    background-color: rgb(54, 54, 54);
+    border: none;
+    color:white;
+    border-radius: 4px;
+    margin: 10px;
+}
+.login-button{
+    font-size: medium;
+    border-radius: 4px;
+    color: white;
+    background-color: red;
+    margin-top: 10%;
+    padding: 10px 115px 10px 115px;
+    border: none;
+    cursor: pointer;
 }
