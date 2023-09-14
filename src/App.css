@@ -6,9 +6,11 @@
 .header{
     z-index: 10;
     width: 100%;
-    position: absolute; 
+    position: absolute;
     top: 0px; 
-    background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(10, 10, 10));
+    background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(10, 10, 10, 0.78));
+    display: flex;
+    justify-content: space-between;
 }
 .netflix-logo{
     margin-top: 30px;
@@ -39,7 +41,8 @@
 }
 .login-ip{
     font-size: medium;
-    padding: 12px 71px 12px 5px;
+    padding: 12px 4px 12px 5px;
+    width: 268px;
     background-color: rgb(54, 54, 54);
     border: none;
     color:white;
@@ -55,4 +58,21 @@
     padding: 10px 115px 10px 115px;
     border: none;
     cursor: pointer;
+}
+.user-sign-out-btn{
+    margin: 2%;
+    align-items: center;
+}
+.sign-out-btn{
+    font-size: 1rem;
+    background-color: rgba(255, 0, 0, 0);
+    padding: 5px;
+    margin-left: 6px;
+    border: none;
+    border-radius: 5px;
+}
+.user-icon{
+    height: 50px;
+    width: 50px;
+    padding-left: 10px;
 }

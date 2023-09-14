@@ -1,6 +1,13 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
 import {cheackValidSignIn, cheackValidSignUp} from "./../utils/Validate"
+import {signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
+import userIcon from "../images/userIcon.png"
+
 
 const Login = () => {
   const [errorMessage,setErrorMessage]=useState(null);
@@ -8,6 +15,8 @@ const Login = () => {
   const name=useRef(null);
   const email=useRef(null);
   const password=useRef(null);
+  const navigate=useNavigate();
+  const dispatch=useDispatch();
 
   const toggleSignInForm =()=>{
     setIsSignInForm(!isSignInForm);
@@ -18,11 +27,64 @@ const Login = () => {
      
     // console.log(email.current.value)
     // console.log(paslidSigsword.current.value);
-    const message=isSignInForm?cheackValidSignIn(email.current.value,password.current.value):cheackValidSignUp(name.current.value,email.current.value,password.current.value);
+    const message=isSignInForm?cheackValidSignIn(email.current.value,password.current.value)
+    :cheackValidSignUp(name.current.value,email.current.value,password.current.value);
     setErrorMessage(message);
 
-    //signIn/ signUp
+    if(message) return; //message!=null (invaild)
 
+    // sign in / sign up logic
+    if(!isSignInForm){
+      // for sign up form
+      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed in 
+          //const user = userCredential.user;
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value ,
+            photoURL:{userIcon}
+          }).then(() => {
+            // Profile updated!
+            const {uid,email,displayName,photoURL} = auth.currentUser;
+            dispatch(addUser({
+              uid:uid, 
+              email:email,
+              displayName:displayName,
+              photoURL:photoURL
+            }));
+            // navigate to next page 
+             navigate("/browse");
+          }).catch((error) => {
+            // An error occurred
+            setErrorMessage(error.message);
+          });
+
+          
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode+" "+errorMessage);
+          // ..
+        });
+
+    }
+    else{
+      // sign in form
+      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed in 
+          //const user = userCredential.user;
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode+" "+errorMessage);
+        });
+    }
+
+    
   }
 
   return (
