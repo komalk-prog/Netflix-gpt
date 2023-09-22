@@ -85,3 +85,21 @@
     width: 50px;
     padding-left: 10px;
 }
+.main-movie-play-btn{
+    background-color: rgba(31, 31, 31, 0.729);
+    color: white;
+    padding: 7px;
+    border-radius: 3px;
+    margin: 10px;
+    border: none;
+}
+.main-movie-info-btn{
+    background-color: rgba(255, 255, 255, 0.469);
+    padding: 7x;
+    border-radius: 3px;
+    border: none;
+}
+.main-movie-container{
+    margin-top: 30%;
+    margin-left: 5%;
+}

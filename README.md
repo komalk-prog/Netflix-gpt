@@ -13,7 +13,11 @@
     - Implement Sign In user API
     - Create Redux Store with userSlice
     - Implemented sign out
-    - Fetch movie from tmdb
+    - Update profile
+    - BugFix: Sign Up user DisplayName and Profile picture update
+    - BugFix: Redirect user to browse(login in) n login page(sign out) without back n forth allowance through URL
+    - unsubscirbed to onAuthStateChanged callback
+    - Fetch movie from tmdb - now playing list
 
 
 # Features
